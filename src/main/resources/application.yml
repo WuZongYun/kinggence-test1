@@ -1,0 +1,12 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: springboot
+  thymeleaf:
+    cache: false
+  resources:
+    static-locations: classpath:static/,file:static/
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8

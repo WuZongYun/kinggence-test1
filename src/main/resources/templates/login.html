@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>springboot</title>
+    <meta name="description" content="AppUI is a Web App Bootstrap Admin Template created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/plugins.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/themes.css">
+    <script src="/js/vendor/modernizr-3.3.1.min.js"></script>
+</head>
+<body>
+    <div id="login-container">
+        <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
+            <i class="fa fa-cube"></i> <strong>springboot</strong>
+        </h1>
+        <div class="block animation-fadeInQuickInv">
+            <div class="block-title">
+                <h2>请输入账号密码</h2>
+            </div>
+
+            <form id="form-login" action="index.html" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" id="username" name="username" value="admin" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="password" id="password" name="password" value="111111" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group form-actions">
+                    <div class="col-xs-8">
+                        <label class="csscheckbox csscheckbox-primary">
+                            <input type="checkbox" id="login-remember-me" name="login-remember-me">
+                            <span></span>
+                        </label>
+                        记住密码
+                    </div>
+                    <div class="col-xs-4 text-right">
+                        <button type="button" onclick="loginFunction()" class="btn btn-effect-ripple btn-sm btn-primary">
+                            <i class="fa fa-check"></i> 登录
+                        </button>
+                    </div>
+                </div>
+                <input type="hidden" id="flag" th:value="${msg}">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <span id="errorText" name="errorText" style="color:red"></span>
+                    </div>
+                </div>
+            </form>
+            <!-- END Login Form -->
+        </div>
+    </div>
+
+    <script src="/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/app.js"></script>
+    <!-- Load and execute javascript code used only in this page -->
+    <script src="/js/pages/readyLogin.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/store.min.js"></script>
+    <!-- artDialog引入 -->
+    <script src="/artDialog/dist/dialog.js?skin=default"></script>
+    <!--错误显示-->
+    <script>
+        $(function () {
+            var flags = $("#flag").val();
+            if (flags == "" || flags == null) {
+            } else {
+                var d = dialog({
+                    title: '系统提示',
+                    width: 200,
+                    content: flags
+                });
+                d.showModal();
+            }
+        });
+    </script>
+    <script>
+
+        function loginFunction() {
+            var userName = $("#username").val();
+            var password = $("#password").val();
+            if (window.top !== window.self) {
+                window.top.location = window.location;
+            }
+            var isNotError = true;
+            if (userName == "") {
+                if ($("#errorInfo").css("display") == 'none') {
+                    $("#errorInfo").css("display", "block");//show的display属性设置为block（显示）
+                    $("#errorText").text("用户名不能为空");
+                } else {//如果show是显示的
+                    $("#errorInfo").css("display", "block");//show的display属性设置为block（显示）
+                    $("#errorText").text("用户名不能为空");
+
+                }
+                isNotError = false;
+                $("#username").focus();
+                return;
+            }
+            if (password == "") {
+                if ($("#errorInfo").css("display") == 'none') {
+                    $("#errorInfo").css("display", "block");//show的display属性设置为block（显示）
+                    $("#errorText").text("密码不能为空");
+                } else {//如果show是显示的
+                    $("#errorInfo").css("display", "block");//show的display属性设置为block（显示）
+                    $("#errorText").text("密码不能为空");
+
+                }
+                $("#password").focus();
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/login?username=" + userName + "&&password=" + password,
+                success: function (r) {
+                    //登录成功
+                    if (r.trim() == "ok") {
+                        window.location.href = "/home";
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

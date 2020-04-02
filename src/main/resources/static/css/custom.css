@@ -1,0 +1,14 @@
+.gw-green{
+	background-color: #0B5D51;
+}
+.bottom-no-border {
+   border-bottom: 0px;
+ 
+}
+.bottom-no-color{
+	margin: -20px -15px 20px;
+ 	
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+	 background: rgba(255, 255, 255, .15);
+}

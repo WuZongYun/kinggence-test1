@@ -1,0 +1,48 @@
+*{
+    padding: 0;margin: 0;
+}
+html,body{
+    font-family:"Microsoft YaHei",sans-serif;color: #333;font-size: 14px;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;color: #666;
+}
+
+/**************/
+.box{
+    width: 100%;height: 100%;
+}
+.all{
+    width: 500px;height: auto;margin: 60px auto;overflow: hidden;
+}
+.top-img{
+    width: 500px;height: auto;font-size: 0;position: relative;
+}
+.activeimg{
+    overflow: hidden;height: 300px;position: relative;
+}
+.top-img .activeimg img{
+    width: 500px;height: 300px;
+}
+.top-img .left:hover,.top-img .right:hover{
+    background: rgba(0,0,0,0.5);
+}
+.ul ol {
+    padding-left: 0px;
+}
+.bot-img ul{
+    width: 100%;height: 100px;
+}
+.bot-img ul li{
+    width: 220px;margin-right: 5px; margin-top: 10px;margin-left: 0px; float: left;border: 1px solid #fff;cursor: pointer;font-size: 0;
+}
+
+.bot-img ul li img{
+
+    width: 218px;
+    height: 150px;
+}
+

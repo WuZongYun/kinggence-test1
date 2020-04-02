@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>这是主页</title>
+</head>
+<body>
+<table border="1" width="1200">
+
+					<label  > 欢迎    </label>
+					<label  th:value="${user.userName}" th:text="${user.userName}"></label>
+					<label  >您的密码是：   </label>
+					<label  th:value="${user.passWord}" th:text="${user.passWord}"></label>
+</table>
+</body>
+</html>
